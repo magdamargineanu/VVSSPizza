@@ -1,0 +1,12 @@
+.idea
+target
+*.iml
+.gradle
+node_modules
+main.js
+style.css
+style.css.map
+src/main/webapp/WEB-INF/assets/main.js
+src/main/webapp/WEB-INF/assets/style.css
+src/main/webapp/WEB-INF/assets/style.css.map
+src/main/resources/application.properties
