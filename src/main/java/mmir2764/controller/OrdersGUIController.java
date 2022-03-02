@@ -50,11 +50,11 @@ public class OrdersGUIController {
     private List<String> orderList = FXCollections.observableArrayList();
     private List<Double> orderPaymentList = FXCollections.observableArrayList();
 
-    public static double getTotalAmount() {
+    public double getTotalAmount() {
         return totalAmount;
     }
 
-    public static void setTotalAmount(double totalAmountValue) {
+    public void setTotalAmount(double totalAmountValue) {
         totalAmount = totalAmountValue;
     }
 
@@ -64,7 +64,7 @@ public class OrdersGUIController {
 
     private TableView<MenuDataModel> table = new TableView<>();
     private Calendar now = Calendar.getInstance();
-    private static double totalAmount;
+    private double totalAmount;
 
     public void setService(PizzaService service, int tableNumber) {
         this.service = service;
