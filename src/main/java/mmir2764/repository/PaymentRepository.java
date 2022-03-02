@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.StringTokenizer;
 
 public class PaymentRepository {
@@ -22,7 +23,7 @@ public class PaymentRepository {
 
     private void readPayments(){
         ClassLoader classLoader = PaymentRepository.class.getClassLoader();
-        File file = new File(classLoader.getResource(filename).getFile());
+        File file = new File(Objects.requireNonNull(classLoader.getResource(filename)).getFile());
         try (BufferedReader br = new BufferedReader(new FileReader(file))){
             String line = null;
             while((line=br.readLine())!=null){
@@ -56,7 +57,7 @@ public class PaymentRepository {
 
     public void writeAll(){
         ClassLoader classLoader = PaymentRepository.class.getClassLoader();
-        File file = new File(classLoader.getResource(filename).getFile());
+        File file = new File(Objects.requireNonNull(classLoader.getResource(filename)).getFile());
 
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
             for (Payment p:paymentList) {
