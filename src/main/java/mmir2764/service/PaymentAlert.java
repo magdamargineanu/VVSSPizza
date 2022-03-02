@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 
 import java.util.Optional;
 
-public class PaymentAlert implements PaymentOperation {
+public class PaymentAlert{
     private final Logger logger = Logger.getLogger(this.getClass());
 
     private final PizzaService service;
@@ -16,21 +16,21 @@ public class PaymentAlert implements PaymentOperation {
         this.service=service;
     }
 
-    @Override
+
     public void cardPayment() {
         logger.info("--------------------------");
         logger.info("Paying by card...");
         logger.info("Please insert your card!");
         logger.info("--------------------------");
     }
-    @Override
+
     public void cashPayment() {
         logger.info("--------------------------");
         logger.info("Paying cash...");
         logger.info("Please show the cash...!");
         logger.info("--------------------------");
     }
-    @Override
+
     public void cancelPayment() {
         logger.info("--------------------------");
         logger.info("Payment choice needed...");

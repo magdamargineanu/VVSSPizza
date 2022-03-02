@@ -29,11 +29,11 @@ public class PizzaService {
 
     public double getTotalAmount(PaymentType type){
         double total=0.0f;
-        List<Payment> l=getPayments();
-        if ((l==null) ||(l.isEmpty())) return total;
-        for (Payment p:l){
-            if (p.getType().equals(type))
-                total+=p.getAmount();
+        List<Payment> paymentList=getPayments();
+        if ((paymentList==null) ||(paymentList.isEmpty())) return total;
+        for (Payment payment:paymentList){
+            if (payment.getType().equals(type))
+                total+=payment.getAmount();
         }
         return total;
     }

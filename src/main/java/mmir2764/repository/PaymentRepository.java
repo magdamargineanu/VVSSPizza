@@ -5,45 +5,20 @@ import mmir2764.model.PaymentType;
 import org.apache.log4j.Logger;
 
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.StringTokenizer;
 
 public class PaymentRepository {
-    private static String filename = "data/payments.txt";
+    private static String filename = "src/main/resources/data/payments.txt";
     private List<Payment> paymentList;
 
     private final Logger logger = Logger.getLogger(this.getClass());
 
     public PaymentRepository(){
         this.paymentList = new ArrayList<>();
-        readPayments();
-    }
-
-    private void readPayments(){
-        ClassLoader classLoader = PaymentRepository.class.getClassLoader();
-        File file = new File(Objects.requireNonNull(classLoader.getResource(filename)).getFile());
-        try (BufferedReader br = new BufferedReader(new FileReader(file))){
-            String line = null;
-            while((line=br.readLine())!=null){
-                Payment payment=getPayment(line);
-                paymentList.add(payment);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private Payment getPayment(String line){
-        Payment item=null;
-        if (line==null|| line.equals("")) return null;
-        StringTokenizer st=new StringTokenizer(line, ",");
-        int tableNumber= Integer.parseInt(st.nextToken());
-        String type= st.nextToken();
-        double amount = Double.parseDouble(st.nextToken());
-        item = new Payment(tableNumber, PaymentType.valueOf(type.toUpperCase()), amount);
-        return item;
     }
 
     public void add(Payment payment){
@@ -56,13 +31,14 @@ public class PaymentRepository {
     }
 
     public void writeAll(){
-        ClassLoader classLoader = PaymentRepository.class.getClassLoader();
-        File file = new File(Objects.requireNonNull(classLoader.getResource(filename)).getFile());
 
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
-            for (Payment p:paymentList) {
-                logger.info(p.toString());
-                bw.write(p.toString());
+        ClassLoader classLoader = PaymentRepository.class.getClassLoader();
+        File file = new File(filename);
+
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(file,true))) {
+            for (Payment payment:paymentList) {
+                logger.info(payment.toString());
+                bw.write(payment.toString());
                 bw.newLine();
             }
         } catch (IOException e) {
