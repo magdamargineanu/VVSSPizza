@@ -15,10 +15,13 @@ import mmir2764.model.PaymentType;
 import mmir2764.repository.MenuRepository;
 import mmir2764.repository.PaymentRepository;
 import mmir2764.service.PizzaService;
+import org.apache.log4j.Logger;
 
 import java.util.Optional;
 
 public class MainFX extends Application {
+
+    private final Logger logger = Logger.getLogger(this.getClass());
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -28,40 +31,34 @@ public class MainFX extends Application {
         PizzaService service = new PizzaService(repoMenu, payRepo);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mainFXML.fxml"));
-        //VBox box = loader.load();
         Parent box = loader.load();
         MainGUIController ctrl = loader.getController();
         ctrl.setService(service);
         primaryStage.setTitle("PizeriaX");
         primaryStage.setResizable(false);
         primaryStage.setAlwaysOnTop(false);
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                Alert exitAlert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to exit the Main window?", ButtonType.YES, ButtonType.NO);
-                Optional<ButtonType> result = exitAlert.showAndWait();
-                if (result.get() == ButtonType.YES){
-                    //Stage stage = (Stage) this.getScene().getWindow();
-                    System.out.println("Incasari cash: "+service.getTotalAmount(PaymentType.Cash));
-                    System.out.println("Incasari card: "+service.getTotalAmount(PaymentType.Card));
-
-                    primaryStage.close();
-                }
-                // consume event
-                else if (result.get() == ButtonType.NO){
-                    event.consume();
-                }
-                else {
-                    event.consume();
-
-                }
+        primaryStage.setOnCloseRequest(event -> {
+            Alert exitAlert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to exit the Main window?", ButtonType.YES, ButtonType.NO);
+            Optional<ButtonType> result = exitAlert.showAndWait();
+            if (result.get() == ButtonType.YES){
+                logger.info("Incasari cash: "+service.getTotalAmount(PaymentType.CASH));
+                logger.info("Incasari card: "+service.getTotalAmount(PaymentType.CARD));
+                primaryStage.close();
+            }
+            // consume event
+            else if (result.get() == ButtonType.NO){
+                event.consume();
+            }
+            else {
+                event.consume();
 
             }
+
         });
         primaryStage.setScene(new Scene(box));
         primaryStage.show();
         KitchenGUI kitchenGUI = new KitchenGUI();
-        kitchenGUI.KitchenGUI();
+        kitchenGUI.init();
     }
 
     public static void main(String[] args) { launch(args);

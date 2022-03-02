@@ -44,8 +44,6 @@ public class MainGUIController  {
 
     PizzaService service;
 
-    public MainGUIController(){}
-
     public void setService(PizzaService service){
         this.service=service;
         tableHandlers();
