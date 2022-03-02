@@ -15,6 +15,7 @@ import mmir2764.model.PaymentType;
 import mmir2764.repository.MenuRepository;
 import mmir2764.repository.PaymentRepository;
 import mmir2764.service.PizzaService;
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import java.util.Optional;
@@ -25,6 +26,7 @@ public class MainFX extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        BasicConfigurator.configure();
 
         MenuRepository repoMenu=new MenuRepository();
         PaymentRepository payRepo= new PaymentRepository();
