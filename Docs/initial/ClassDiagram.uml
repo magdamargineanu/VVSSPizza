@@ -3,52 +3,38 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="0.0" y="450.0">com</node>
-    <node x="370.0" y="300.0">fxml</node>
-    <node x="205.0" y="225.0">images</node>
-    <node x="261.0" y="150.0">netscape</node>
-    <node x="0.0" y="375.0">data</node>
-    <node x="165.0" y="450.0">org</node>
+    <node x="173.0" y="450.0">com</node>
+    <node x="0.0" y="375.0">fxml</node>
+    <node x="410.0" y="225.0">images</node>
+    <node x="0.0" y="225.0">netscape</node>
+    <node x="261.0" y="150.0">mmir2764.controller</node>
+    <node x="173.0" y="375.0">data</node>
+    <node x="338.0" y="450.0">org</node>
     <node x="317.0" y="0.0">toolbarButtonGraphics</node>
-    <node x="330.0" y="450.0">sun</node>
+    <node x="503.0" y="450.0">sun</node>
     <node x="0.0" y="525.0">jdk</node>
-    <node x="0.0" y="225.0">META-INF</node>
-    <node x="173.0" y="375.0">impl</node>
+    <node x="205.0" y="225.0">META-INF</node>
+    <node x="346.0" y="375.0">impl</node>
     <node x="0.0" y="150.0">groovyjarjarasm</node>
-    <node x="346.0" y="375.0">java</node>
-    <node x="394.0" y="225.0">groovy</node>
-    <node x="189.0" y="300.0">javax</node>
+    <node x="0.0" y="450.0">java</node>
+    <node x="0.0" y="300.0">groovy</node>
+    <node x="378.0" y="300.0">javax</node>
     <node x="0.0" y="75.0">groovyjarjarpicocli</node>
     <node x="0.0" y="0.0">groovyjarjarcommonscli</node>
-    <node x="0.0" y="300.0">javafx</node>
+    <node x="189.0" y="300.0">javafx</node>
     <node x="293.0" y="75.0">groovyjarjarantlr</node>
   </nodes>
   <notes />
   <edges />
-  <settings layout="Hierarchic Group" zoom="0.6771428571428572" x="612.0" y="474.7257383966245" />
+  <settings layout="Hierarchic Group" zoom="0.37714285714285717" x="612.0" y="443.621212121212" />
   <SelectedNodes>
-    <node>com</node>
-    <node>fxml</node>
-    <node>images</node>
-    <node>netscape</node>
-    <node>data</node>
-    <node>org</node>
-    <node>toolbarButtonGraphics</node>
-    <node>sun</node>
-    <node>jdk</node>
-    <node>META-INF</node>
-    <node>impl</node>
-    <node>groovyjarjarasm</node>
-    <node>java</node>
-    <node>groovy</node>
-    <node>javax</node>
-    <node>groovyjarjarpicocli</node>
     <node>groovyjarjarcommonscli</node>
-    <node>javafx</node>
-    <node>groovyjarjarantlr</node>
   </SelectedNodes>
   <Categories>
     <Category>Fields</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
