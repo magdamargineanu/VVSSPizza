@@ -22,16 +22,14 @@ public class PaymentRepository {
 
     public void add(Payment payment) {
         paymentList.add(payment);
-        writeAll();
+        writeToFile();
     }
 
     public List<Payment> getAll() {
         return paymentList;
     }
 
-    public void writeAll() {
-
-        ClassLoader classLoader = PaymentRepository.class.getClassLoader();
+    public void writeToFile() {
         File file = new File(filename);
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {

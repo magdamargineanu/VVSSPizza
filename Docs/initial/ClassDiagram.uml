@@ -25,15 +25,30 @@
   </nodes>
   <notes />
   <edges />
-  <settings layout="Hierarchic Group" zoom="0.37714285714285717" x="612.0" y="443.621212121212" />
+  <settings layout="Hierarchic Group" zoom="0.6771428571428572" x="612.0" y="474.7257383966245" />
   <SelectedNodes>
+    <node>com</node>
+    <node>fxml</node>
+    <node>images</node>
+    <node>netscape</node>
+    <node>data</node>
+    <node>org</node>
+    <node>toolbarButtonGraphics</node>
+    <node>sun</node>
+    <node>jdk</node>
+    <node>META-INF</node>
+    <node>impl</node>
+    <node>groovyjarjarasm</node>
+    <node>java</node>
+    <node>groovy</node>
+    <node>javax</node>
+    <node>groovyjarjarpicocli</node>
     <node>groovyjarjarcommonscli</node>
+    <node>javafx</node>
+    <node>groovyjarjarantlr</node>
   </SelectedNodes>
   <Categories>
-    <Category>Methods</Category>
-    <Category>Inner Classes</Category>
     <Category>Fields</Category>
-    <Category>Properties</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
