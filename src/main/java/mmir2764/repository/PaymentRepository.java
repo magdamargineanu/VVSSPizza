@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PaymentRepository {
-    private static String filename = "src/main/resources/data/payments.txt";
+    public static String filename = "src/main/resources/data/payments.txt";
     private List<Payment> paymentList;
 
     private final Logger logger = Logger.getLogger(this.getClass());

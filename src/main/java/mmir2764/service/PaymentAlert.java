@@ -47,16 +47,20 @@ public class PaymentAlert{
         paymentAlert.getButtonTypes().setAll(cardPayment, cashPayment, cancel);
         Optional<ButtonType> result = paymentAlert.showAndWait();
         if (result.isPresent()) {
-            if (result.get() == cardPayment) {
-                cardPayment();
-                service.addPayment(tableNumber, PaymentType.CARD, totalAmount);
-            } else if (result.get() == cashPayment) {
-                cashPayment();
-                service.addPayment(tableNumber, PaymentType.CASH, totalAmount);
-            } else if (result.get() == cancel) {
-                cancelPayment();
-            } else {
-                cancelPayment();
+            try {
+                if (result.get() == cardPayment) {
+                    cardPayment();
+                    service.addPayment(tableNumber, PaymentType.CARD, totalAmount);
+                } else if (result.get() == cashPayment) {
+                    cashPayment();
+                    service.addPayment(tableNumber, PaymentType.CASH, totalAmount);
+                } else if (result.get() == cancel) {
+                    cancelPayment();
+                } else {
+                    cancelPayment();
+                }
+            } catch (Exception e) {
+                logger.error(e.getMessage());
             }
         }
     }

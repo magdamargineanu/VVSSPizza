@@ -3,6 +3,7 @@ package mmir2764.service;
 import mmir2764.model.MenuDataModel;
 import mmir2764.model.Payment;
 import mmir2764.model.PaymentType;
+import mmir2764.model.PaymentValidator;
 import mmir2764.repository.MenuRepository;
 import mmir2764.repository.PaymentRepository;
 
@@ -12,6 +13,7 @@ public class PizzaService {
 
     private final MenuRepository menuRepo;
     private final PaymentRepository payRepo;
+    private final PaymentValidator validator = new PaymentValidator();
 
     public PizzaService(MenuRepository menuRepo, PaymentRepository payRepo){
         this.menuRepo=menuRepo;
@@ -22,8 +24,9 @@ public class PizzaService {
 
     public List<Payment> getPayments(){return payRepo.getAll(); }
 
-    public void addPayment(int table, PaymentType type, double amount){
+    public void addPayment(int table, PaymentType type, double amount) throws Exception {
         Payment payment= new Payment(table, type, amount);
+        validator.validate(payment);
         payRepo.add(payment);
     }
 
