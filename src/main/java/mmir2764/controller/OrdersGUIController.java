@@ -103,7 +103,16 @@ public class OrdersGUIController {
             logger.info("Total: " + getTotalAmount());
             logger.info("--------------------------");
             PaymentAlert pay = new PaymentAlert(service);
-            pay.showPaymentAlert(tableNumber, getTotalAmount());
+            Alert paymentAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            paymentAlert.setTitle("Payment for Table "+tableNumber);
+            paymentAlert.setHeaderText("Total amount: " + totalAmount);
+            paymentAlert.setContentText("Please choose payment option");
+            ButtonType cardPayment = new ButtonType("Pay by Card");
+            ButtonType cashPayment = new ButtonType("Pay Cash");
+            ButtonType cancel = new ButtonType("Cancel");
+            paymentAlert.getButtonTypes().setAll(cardPayment, cashPayment, cancel);
+            Optional<ButtonType> result = paymentAlert.showAndWait();
+            pay.payOrderOrCancel(tableNumber, getTotalAmount(),result);
         });
     }
 

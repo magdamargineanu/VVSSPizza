@@ -36,25 +36,17 @@ public class PaymentAlert{
         logger.info("Payment choice needed...");
         logger.info("--------------------------");
     }
-      public void showPaymentAlert(int tableNumber, double totalAmount ) {
-        Alert paymentAlert = new Alert(Alert.AlertType.CONFIRMATION);
-        paymentAlert.setTitle("Payment for Table "+tableNumber);
-        paymentAlert.setHeaderText("Total amount: " + totalAmount);
-        paymentAlert.setContentText("Please choose payment option");
-        ButtonType cardPayment = new ButtonType("Pay by Card");
-        ButtonType cashPayment = new ButtonType("Pay Cash");
-        ButtonType cancel = new ButtonType("Cancel");
-        paymentAlert.getButtonTypes().setAll(cardPayment, cashPayment, cancel);
-        Optional<ButtonType> result = paymentAlert.showAndWait();
+      public void payOrderOrCancel(int tableNumber, double totalAmount , Optional<ButtonType> result) {
+
         if (result.isPresent()) {
             try {
-                if (result.get() == cardPayment) {
+                if (result.get().getText().equals("Pay by Card")) {
                     cardPayment();
                     service.addPayment(tableNumber, PaymentType.CARD, totalAmount);
-                } else if (result.get() == cashPayment) {
+                } else if (result.get().getText().equals("Pay Cash")) {
                     cashPayment();
                     service.addPayment(tableNumber, PaymentType.CASH, totalAmount);
-                } else if (result.get() == cancel) {
+                } else if (result.get().getText().equals("Cancel")) {
                     cancelPayment();
                 } else {
                     cancelPayment();
