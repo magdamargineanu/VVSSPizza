@@ -42,20 +42,23 @@ public class MainFX extends Application {
         primaryStage.setOnCloseRequest(event -> {
             Alert exitAlert = new Alert(Alert.AlertType.CONFIRMATION, "Would you like to exit the Main window?", ButtonType.YES, ButtonType.NO);
             Optional<ButtonType> result = exitAlert.showAndWait();
-            if (result.get() == ButtonType.YES){
-                logger.info("Incasari cash: "+service.getTotalAmount(PaymentType.CASH));
-                logger.info("Incasari card: "+service.getTotalAmount(PaymentType.CARD));
-                primaryStage.close();
-            }
-            // consume event
-            else if (result.get() == ButtonType.NO){
-                event.consume();
-            }
-            else {
-                event.consume();
+            try{
+                if (result.get() == ButtonType.YES){
+                    logger.info("Incasari cash: "+service.getTotalAmount(PaymentType.CASH));
+                    logger.info("Incasari card: "+service.getTotalAmount(PaymentType.CARD));
+                    primaryStage.close();
+                }
+                // consume event
+                else if (result.get() == ButtonType.NO){
+                    event.consume();
+                }
+                else {
+                    event.consume();
 
+                }
+            } catch (Exception e){
+                logger.error(e.getMessage());
             }
-
         });
         primaryStage.setScene(new Scene(box));
         primaryStage.show();

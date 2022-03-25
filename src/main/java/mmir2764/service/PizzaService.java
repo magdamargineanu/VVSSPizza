@@ -30,8 +30,9 @@ public class PizzaService {
         payRepo.add(payment);
     }
 
-    public double getTotalAmount(PaymentType type){
+    public double getTotalAmount(PaymentType type) throws Exception {
         double total=0.0f;
+        if(type == null) throw new Exception("Payment type cannot be null!");
         List<Payment> paymentList=getPayments();
         if ((paymentList==null) ||(paymentList.isEmpty())) return total;
         for (Payment payment:paymentList){
