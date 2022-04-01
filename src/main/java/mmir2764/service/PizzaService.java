@@ -15,31 +15,35 @@ public class PizzaService {
     private final PaymentRepository payRepo;
     private final PaymentValidator validator = new PaymentValidator();
 
-    public PizzaService(MenuRepository menuRepo, PaymentRepository payRepo){
-        this.menuRepo=menuRepo;
-        this.payRepo=payRepo;
+    public PizzaService(MenuRepository menuRepo, PaymentRepository payRepo) {
+        this.menuRepo = menuRepo;
+        this.payRepo = payRepo;
     }
 
-    public List<MenuDataModel> getMenuData(){return menuRepo.getMenu();}
+    public List<MenuDataModel> getMenuData() {
+        return menuRepo.getMenu();
+    }
 
-    public List<Payment> getPayments(){return payRepo.getAll(); }
+    public List<Payment> getPayments() {
+        return payRepo.getAll();
+    }
 
     public void addPayment(int table, PaymentType type, double amount) throws Exception {
-        Payment payment= new Payment(table, type, amount);
+        Payment payment = new Payment(table, type, amount);
         validator.validate(payment);
         payRepo.add(payment);
     }
 
     public double getTotalAmount(PaymentType type) throws Exception {
-        double total=0.0f;
-        if(type == null)
+        double total = 0.0f;
+        if (type == null)
             throw new Exception("Payment type cannot be null!");
-        List<Payment> paymentList=getPayments();
-        if ((paymentList==null) ||(paymentList.isEmpty()))
+        List<Payment> paymentList = getPayments();
+        if ((paymentList == null) || (paymentList.isEmpty()))
             return total;
-        for (Payment payment:paymentList){
+        for (Payment payment : paymentList) {
             if (payment.getType().equals(type))
-                total+=payment.getAmount();
+                total += payment.getAmount();
         }
         return total;
     }
