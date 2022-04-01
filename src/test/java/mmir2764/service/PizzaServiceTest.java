@@ -84,4 +84,40 @@ class PizzaServiceTest {
             assertThrows(Exception.class, () -> service.addPayment(9, PaymentType.CASH, 10f));
         }
     }
+
+    @Nested
+    class GetTotalAmountWBTTest {
+        @Test
+        void invalidPaymentTypeTest() {
+            assertThrows(Exception.class, () -> service.getTotalAmount(null));
+        }
+
+        @Test
+        void emptyListTest() throws Exception {
+            assertEquals(0, service.getTotalAmount(PaymentType.CASH));
+        }
+
+        @Test
+        void cashTypeTest1() throws Exception {
+            service.addPayment(2, PaymentType.CASH, 12.7);
+            service.addPayment(1, PaymentType.CASH, 22.7);
+            assertEquals(35.4, service.getTotalAmount(PaymentType.CASH));
+        }
+
+        @Test
+        void cashTypeTest2() throws Exception {
+            service.addPayment(2, PaymentType.CARD, 12.7);
+            service.addPayment(1, PaymentType.CARD, 10.7);
+            assertEquals(0, service.getTotalAmount(PaymentType.CASH));
+        }
+
+        @Test
+        void allTypes() throws Exception {
+            service.addPayment(2, PaymentType.CASH, 12.7);
+            service.addPayment(1, PaymentType.CASH, 22.7);
+            service.addPayment(2, PaymentType.CARD, 12.7);
+            service.addPayment(1, PaymentType.CARD, 10.7);
+            assertEquals(23.4, service.getTotalAmount(PaymentType.CARD));
+        }
+    }
 }
