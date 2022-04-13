@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaymentRepository {
+public class PaymentRepository implements Repository<Payment> {
     public static String filename = "src/main/resources/data/payments.txt";
     private List<Payment> paymentList;
 
@@ -29,7 +29,7 @@ public class PaymentRepository {
         return paymentList;
     }
 
-    public void writeToFile() {
+    private void writeToFile() {
         File file = new File(filename);
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {

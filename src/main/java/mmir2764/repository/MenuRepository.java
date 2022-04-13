@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.StringTokenizer;
 
-public class MenuRepository {
+public class MenuRepository implements Repository<MenuDataModel> {
     private List<MenuDataModel> listMenu;
 
     private void readMenu(){
@@ -37,9 +37,15 @@ public class MenuRepository {
         return item;
     }
 
-    public List<MenuDataModel> getMenu(){
+    @Override
+    public List<MenuDataModel> getAll(){
         readMenu();//create a new menu for each table, on request
         return listMenu;
+    }
+
+    @Override
+    public void add(MenuDataModel entity) {
+
     }
 
 }

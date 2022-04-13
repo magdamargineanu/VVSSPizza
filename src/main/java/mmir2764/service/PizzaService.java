@@ -21,7 +21,7 @@ public class PizzaService {
     }
 
     public List<MenuDataModel> getMenuData() {
-        return menuRepo.getMenu();
+        return menuRepo.getAll();
     }
 
     public List<Payment> getPayments() {
