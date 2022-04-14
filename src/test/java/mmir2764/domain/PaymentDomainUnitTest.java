@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class PaymentDomainTest {
+public class PaymentDomainUnitTest {
     @Test
     public void createPaymentTest() {
         Payment payment = new Payment(12, PaymentType.CARD, 26.8);

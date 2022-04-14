@@ -2,6 +2,7 @@ package mmir2764.service;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import mmir2764.model.Payment;
 import mmir2764.model.PaymentType;
 import org.apache.log4j.Logger;
 
@@ -42,10 +43,10 @@ public class PaymentAlert{
             try {
                 if (result.get().getText().equals("Pay by Card")) {
                     cardPayment();
-                    service.addPayment(tableNumber, PaymentType.CARD, totalAmount);
+                    service.addPayment(new Payment(tableNumber, PaymentType.CARD, totalAmount));
                 } else if (result.get().getText().equals("Pay Cash")) {
                     cashPayment();
-                    service.addPayment(tableNumber, PaymentType.CASH, totalAmount);
+                    service.addPayment(new Payment(tableNumber, PaymentType.CASH, totalAmount));
                 } else if (result.get().getText().equals("Cancel")) {
                     cancelPayment();
                 } else {

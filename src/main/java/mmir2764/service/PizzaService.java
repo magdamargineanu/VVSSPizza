@@ -5,17 +5,17 @@ import mmir2764.model.Payment;
 import mmir2764.model.PaymentType;
 import mmir2764.model.PaymentValidator;
 import mmir2764.repository.MenuRepository;
-import mmir2764.repository.PaymentRepository;
+import mmir2764.repository.Repository;
 
 import java.util.List;
 
 public class PizzaService {
 
     private final MenuRepository menuRepo;
-    private final PaymentRepository payRepo;
+    private final Repository<Payment> payRepo;
     private final PaymentValidator validator = new PaymentValidator();
 
-    public PizzaService(MenuRepository menuRepo, PaymentRepository payRepo) {
+    public PizzaService(MenuRepository menuRepo, Repository<Payment> payRepo) {
         this.menuRepo = menuRepo;
         this.payRepo = payRepo;
     }
@@ -28,8 +28,7 @@ public class PizzaService {
         return payRepo.getAll();
     }
 
-    public void addPayment(int table, PaymentType type, double amount) throws Exception {
-        Payment payment = new Payment(table, type, amount);
+    public void addPayment(Payment payment) throws Exception {
         validator.validate(payment);
         payRepo.add(payment);
     }
@@ -47,5 +46,4 @@ public class PizzaService {
         }
         return total;
     }
-
 }
