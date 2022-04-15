@@ -2,8 +2,6 @@ package mmir2764.repository;
 
 import mmir2764.model.Payment;
 import mmir2764.model.PaymentType;
-import mmir2764.repository.PaymentRepository;
-import mmir2764.repository.Repository;
 import mmir2764.service.PizzaService;
 import org.junit.Before;
 import org.junit.Test;
