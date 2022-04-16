@@ -6,13 +6,12 @@ import mmir2764.repository.PaymentRepository;
 import org.apache.log4j.BasicConfigurator;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class PizzaServiceTest {
+class PizzaServiceBBTTest {
     private PaymentRepository repository;
     private PizzaService service;
 
@@ -55,12 +54,11 @@ class PizzaServiceTest {
     }
 
     @Test
-    @Disabled
     void addInvalidPaymentAmountBVAUpperLimit() {
         // assert
 //        assertThrows(Exception.class,() -> service.addPayment(new Payment(1, PaymentType.CASH, Double.MAX_VALUE + 1)));
         try {
-            service.addPayment(new Payment(1, PaymentType.CASH, Double.MAX_VALUE + 1));
+            service.addPayment(new Payment(1, null, Double.MAX_VALUE + 1));
             assert false;
         } catch (Exception e) {
             assert true;
@@ -68,14 +66,16 @@ class PizzaServiceTest {
         assertEquals(0, repository.getAll().size());
     }
 
-    @ParameterizedTest
-    @EnumSource(PaymentType.class)
-    void addValidPaymentTypeECP(PaymentType type) throws Exception {
+//    @ParameterizedTest
+//    @EnumSource(PaymentType.class)
+    @Test
+    void addValidPaymentTypeECP() throws Exception {
         // act
-        service.addPayment(new Payment(1, type, 12.4f));
+        service.addPayment(new Payment(1, PaymentType.CASH, 12.4f));
+        service.addPayment(new Payment(1, PaymentType.CARD, 12.4f));
 
         // assert
-        assertEquals(1, repository.getAll().size());
+        assertEquals(2, repository.getAll().size());
     }
 
 //    @Nested
@@ -106,45 +106,4 @@ class PizzaServiceTest {
         }
 //    }
 
-    @Nested
-    class GetTotalAmountWBTTest {
-        @Test
-        void invalidPaymentTypeTest() {
-            try {
-                service.getTotalAmount(null);
-                assert false;
-            } catch (Exception e) {
-                assert true;
-            }
-//            assertThrows(Exception.class, () -> service.getTotalAmount(null));
-        }
-
-        @Test
-        void emptyListTest() throws Exception {
-            assertEquals(0, service.getTotalAmount(PaymentType.CASH));
-        }
-
-        @Test
-        void cashTypeTest1() throws Exception {
-            service.addPayment(new Payment(2, PaymentType.CASH, 12.7));
-            service.addPayment(new Payment(1, PaymentType.CASH, 22.7));
-            assertEquals(35.4, service.getTotalAmount(PaymentType.CASH));
-        }
-
-        @Test
-        void cashTypeTest2() throws Exception {
-            service.addPayment(new Payment(2, PaymentType.CARD, 12.7));
-            service.addPayment(new Payment(1, PaymentType.CARD, 10.7));
-            assertEquals(0, service.getTotalAmount(PaymentType.CASH));
-        }
-
-        @Test
-        void allTypes() throws Exception {
-            service.addPayment(new Payment(2, PaymentType.CASH, 12.7));
-            service.addPayment(new Payment(1, PaymentType.CASH, 22.7));
-            service.addPayment(new Payment(2, PaymentType.CARD, 12.7));
-            service.addPayment(new Payment(1, PaymentType.CARD, 10.7));
-            assertEquals(23.4, service.getTotalAmount(PaymentType.CARD));
-        }
-    }
 }
