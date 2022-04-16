@@ -78,8 +78,8 @@ class PizzaServiceTest {
         assertEquals(1, repository.getAll().size());
     }
 
-    @Nested
-    class TableNumberTest {
+//    @Nested
+//    class TableNumberTest {
         @Test
         void addValidPaymentTableNumber() throws Exception {
             //act
@@ -104,7 +104,7 @@ class PizzaServiceTest {
 //            assertThrows(Exception.class, () -> service.addPayment(new Payment(0, PaymentType.CASH, 10f)));
 //            assertThrows(Exception.class, () -> service.addPayment(new Payment(9, PaymentType.CASH, 10f)));
         }
-    }
+//    }
 
     @Nested
     class GetTotalAmountWBTTest {
