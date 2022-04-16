@@ -7,8 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
@@ -16,7 +14,7 @@ import static org.mockito.Mockito.times;
 public class PaymentRepositoryIntegrationTest {
     public PizzaService service;
 
-    public Repository<Payment> repository;
+    public PaymentRepository repository;
 
     @Before
     public void setUp() {
@@ -38,7 +36,7 @@ public class PaymentRepositoryIntegrationTest {
     }
 
     @Test
-    public void addPayment() throws Exception {
+    public void addPayment() {
         Payment p = mock(Payment.class);
 
         Mockito.when(p.getTableNumber()).thenReturn(1);
@@ -46,7 +44,11 @@ public class PaymentRepositoryIntegrationTest {
         Mockito.when(p.getAmount()).thenReturn(10.2);
 
         assertEquals(0, service.getPayments().size());
-        service.addPayment(p);
+        try {
+            service.addPayment(p);
+        } catch (Exception e) {
+            assert false;
+        }
         assertEquals(1, service.getPayments().size());
 
         Mockito.verify(p, times(2)).getTableNumber();

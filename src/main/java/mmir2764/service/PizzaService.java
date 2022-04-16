@@ -5,6 +5,7 @@ import mmir2764.model.Payment;
 import mmir2764.model.PaymentType;
 import mmir2764.model.PaymentValidator;
 import mmir2764.repository.MenuRepository;
+import mmir2764.repository.PaymentRepository;
 import mmir2764.repository.Repository;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class PizzaService {
     private final Repository<Payment> payRepo;
     private final PaymentValidator validator = new PaymentValidator();
 
-    public PizzaService(MenuRepository menuRepo, Repository<Payment> payRepo) {
+    public PizzaService(MenuRepository menuRepo, PaymentRepository payRepo) {
         this.menuRepo = menuRepo;
         this.payRepo = payRepo;
     }
