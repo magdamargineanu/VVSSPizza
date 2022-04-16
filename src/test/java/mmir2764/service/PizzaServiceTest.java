@@ -49,7 +49,7 @@ class PizzaServiceTest {
             service.addPayment(new Payment(1, PaymentType.CARD, amount));
             assert false;
         } catch (Exception e) {
-            e.printStackTrace();
+            assert true;
         }
         assertEquals(0, repository.getAll().size());
     }
@@ -63,7 +63,7 @@ class PizzaServiceTest {
             service.addPayment(new Payment(1, PaymentType.CASH, Double.MAX_VALUE + 1));
             assert false;
         } catch (Exception e) {
-            e.printStackTrace();
+            assert true;
         }
         assertEquals(0, repository.getAll().size());
     }
@@ -99,7 +99,7 @@ class PizzaServiceTest {
                 service.addPayment(new Payment(9, PaymentType.CASH, 10f));
                 assert false;
             } catch (Exception e) {
-                e.printStackTrace();
+                assert true;
             }
 //            assertThrows(Exception.class, () -> service.addPayment(new Payment(0, PaymentType.CASH, 10f)));
 //            assertThrows(Exception.class, () -> service.addPayment(new Payment(9, PaymentType.CASH, 10f)));
@@ -114,7 +114,7 @@ class PizzaServiceTest {
                 service.getTotalAmount(null);
                 assert false;
             } catch (Exception e) {
-                e.printStackTrace();
+                assert true;
             }
 //            assertThrows(Exception.class, () -> service.getTotalAmount(null));
         }
