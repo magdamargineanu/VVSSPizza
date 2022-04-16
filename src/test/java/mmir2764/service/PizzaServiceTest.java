@@ -44,7 +44,13 @@ class PizzaServiceTest {
     @Order(2)
     void addInvalidPaymentAmountBVALowerLimit(float amount) {
         // assert
-        assertThrows(Exception.class, () -> service.addPayment(new Payment(1, PaymentType.CARD, amount)));
+//        assertThrows(Exception.class, () -> service.addPayment(new Payment(1, PaymentType.CARD, amount)));
+        try {
+            service.addPayment(new Payment(1, PaymentType.CARD, amount));
+            assert false;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         assertEquals(0, repository.getAll().size());
     }
 
@@ -52,7 +58,13 @@ class PizzaServiceTest {
     @Disabled
     void addInvalidPaymentAmountBVAUpperLimit() {
         // assert
-        assertThrows(Exception.class,() -> service.addPayment(new Payment(1, PaymentType.CASH, Double.MAX_VALUE + 1)));
+//        assertThrows(Exception.class,() -> service.addPayment(new Payment(1, PaymentType.CASH, Double.MAX_VALUE + 1)));
+        try {
+            service.addPayment(new Payment(1, PaymentType.CASH, Double.MAX_VALUE + 1));
+            assert false;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         assertEquals(0, repository.getAll().size());
     }
 
@@ -81,8 +93,16 @@ class PizzaServiceTest {
         @Test
         void addInvalidPaymentTableNumber() {
             // assert
-            assertThrows(Exception.class, () -> service.addPayment(new Payment(0, PaymentType.CASH, 10f)));
-            assertThrows(Exception.class, () -> service.addPayment(new Payment(9, PaymentType.CASH, 10f)));
+            try {
+                service.addPayment(new Payment(0, PaymentType.CASH, 10f));
+                assert false;
+                service.addPayment(new Payment(9, PaymentType.CASH, 10f));
+                assert false;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+//            assertThrows(Exception.class, () -> service.addPayment(new Payment(0, PaymentType.CASH, 10f)));
+//            assertThrows(Exception.class, () -> service.addPayment(new Payment(9, PaymentType.CASH, 10f)));
         }
     }
 
@@ -90,7 +110,13 @@ class PizzaServiceTest {
     class GetTotalAmountWBTTest {
         @Test
         void invalidPaymentTypeTest() {
-            assertThrows(Exception.class, () -> service.getTotalAmount(null));
+            try {
+                service.getTotalAmount(null);
+                assert false;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+//            assertThrows(Exception.class, () -> service.getTotalAmount(null));
         }
 
         @Test

@@ -32,7 +32,9 @@ public class PaymentDomainIntegrationTest {
         Payment p2 = new Payment(2, PaymentType.CARD, 21.3);
         Payment p3 = new Payment(3, PaymentType.CASH, 31.3);
 
-        Arrays.asList(p1, p2, p3).forEach(repository::add);
+        repository.add(p1);
+        repository.add(p2);
+        repository.add(p3);
 
         assertEquals(3, service.getPayments().size());
     }

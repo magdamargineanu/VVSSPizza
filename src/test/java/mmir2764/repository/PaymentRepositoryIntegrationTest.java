@@ -30,7 +30,9 @@ public class PaymentRepositoryIntegrationTest {
         Payment p2 = mock(Payment.class);
         Payment p3 = mock(Payment.class);
 
-        Arrays.asList(p1, p2, p3).forEach(repository::add);
+        repository.add(p1);
+        repository.add(p2);
+        repository.add(p3);
 
         assertEquals(3, service.getPayments().size());
     }
