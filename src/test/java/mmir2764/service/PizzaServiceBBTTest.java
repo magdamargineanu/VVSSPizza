@@ -54,11 +54,12 @@ class PizzaServiceBBTTest {
     }
 
     @Test
+    @Disabled
     void addInvalidPaymentAmountBVAUpperLimit() {
         // assert
 //        assertThrows(Exception.class,() -> service.addPayment(new Payment(1, PaymentType.CASH, Double.MAX_VALUE + 1)));
         try {
-            service.addPayment(new Payment(1, null, Double.MAX_VALUE + 1));
+            service.addPayment(new Payment(1, PaymentType.CARD, Double.MAX_VALUE + 1));
             assert false;
         } catch (Exception e) {
             assert true;
@@ -76,6 +77,19 @@ class PizzaServiceBBTTest {
 
         // assert
         assertEquals(2, repository.getAll().size());
+    }
+
+    @Test
+    void addInvalidPaymentTypeECP() throws Exception {
+        // assert
+//        assertThrows(Exception.class,() -> service.addPayment(new Payment(1, PaymentType.CASH, Double.MAX_VALUE + 1)));
+        try {
+            service.addPayment(new Payment(1, null, Double.MAX_VALUE + 1));
+            assert false;
+        } catch (Exception e) {
+            assert true;
+        }
+        assertEquals(0, repository.getAll().size());
     }
 
 //    @Nested
