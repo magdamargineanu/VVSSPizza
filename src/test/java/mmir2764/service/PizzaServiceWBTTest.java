@@ -57,11 +57,15 @@ public class PizzaServiceWBTTest {
     }
 
     @Test
-    void allTypes() throws Exception {
-        service.addPayment(new Payment(2, PaymentType.CASH, 12.7));
-        service.addPayment(new Payment(1, PaymentType.CASH, 22.7));
-        service.addPayment(new Payment(2, PaymentType.CARD, 12.7));
-        service.addPayment(new Payment(1, PaymentType.CARD, 10.7));
-        assertEquals(23.4, service.getTotalAmount(PaymentType.CARD));
+    void allTypes() {
+        try {
+            service.addPayment(new Payment(2, PaymentType.CASH, 12.7));
+            service.addPayment(new Payment(1, PaymentType.CASH, 22.7));
+            service.addPayment(new Payment(2, PaymentType.CARD, 12.7));
+            service.addPayment(new Payment(1, PaymentType.CARD, 10.7));
+            assertEquals(23.4, service.getTotalAmount(PaymentType.CARD));
+        } catch (Exception e) {
+            assert false;
+        }
     }
 }

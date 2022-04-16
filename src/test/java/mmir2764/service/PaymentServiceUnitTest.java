@@ -3,8 +3,11 @@ package mmir2764.service;
 import mmir2764.model.Payment;
 import mmir2764.model.PaymentType;
 import mmir2764.repository.Repository;
+import org.apache.log4j.BasicConfigurator;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -23,6 +26,11 @@ public class PaymentServiceUnitTest {
 
     @InjectMocks
     private PizzaService service;
+
+    @BeforeAll
+    static void init() {
+        BasicConfigurator.configure();
+    }
 
     @Before
     public void setUp() {
