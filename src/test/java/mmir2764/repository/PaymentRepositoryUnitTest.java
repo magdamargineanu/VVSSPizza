@@ -2,15 +2,20 @@ package mmir2764.repository;
 
 import mmir2764.model.Payment;
 import mmir2764.model.PaymentType;
-import org.junit.Before;
-import org.junit.Test;
+import org.apache.log4j.BasicConfigurator;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PaymentRepositoryUnitTest {
     public PaymentRepository repository;
 
-    @Before
+    @BeforeAll
+    static void init() {
+        BasicConfigurator.configure();
+    }
+
+    @BeforeEach
     public void setUp() {
         repository = new PaymentRepository();
     }

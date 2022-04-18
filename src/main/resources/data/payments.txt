@@ -90,3 +90,45 @@
 1,CASH,22.7
 2,CARD,12.7
 1,CARD,10.7
+8,CASH,12.3
+8,CASH,12.3
+7,CARD,21.3
+8,CASH,12.3
+7,CARD,21.3
+6,CASH,32.1
+8,CASH,12.3
+1,CARD,12.3
+1,CARD,12.3
+2,CARD,21.3
+1,CARD,12.3
+2,CARD,21.3
+3,CASH,31.3
+1,CARD,12.3
+1,CARD,12.3
+1,CARD,12.3
+2,CARD,21.3
+1,CARD,12.3
+2,CARD,21.3
+3,CASH,31.3
+1,CARD,12.3
+Mock for Payment, hashCode: 2048537720
+Mock for Payment, hashCode: 2048537720
+Mock for Payment, hashCode: 972865270
+Mock for Payment, hashCode: 2048537720
+Mock for Payment, hashCode: 972865270
+Mock for Payment, hashCode: 1716932897
+Mock for Payment, hashCode: 1653361344
+Mock for Payment, hashCode: 2048537720
+Mock for Payment, hashCode: 2048537720
+Mock for Payment, hashCode: 972865270
+Mock for Payment, hashCode: 2048537720
+Mock for Payment, hashCode: 972865270
+Mock for Payment, hashCode: 1716932897
+Mock for Payment, hashCode: 1653361344
+8,CASH,12.3
+8,CASH,12.3
+7,CARD,21.3
+8,CASH,12.3
+7,CARD,21.3
+6,CASH,32.1
+8,CASH,12.3

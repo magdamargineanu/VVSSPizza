@@ -4,9 +4,7 @@ import mmir2764.model.Payment;
 import mmir2764.model.PaymentType;
 import mmir2764.repository.PaymentRepository;
 import org.apache.log4j.BasicConfigurator;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.*;
 import org.mockito.Mockito;
 
 import java.util.Arrays;
@@ -25,7 +23,7 @@ public class PaymentServiceUnitTest {
         BasicConfigurator.configure();
     }
 
-    @Before
+    @BeforeEach
     public void setUp() {
         paymentRepository = mock(PaymentRepository.class);
         service = new PizzaService(null, paymentRepository);
