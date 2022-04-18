@@ -8,6 +8,8 @@ public class PaymentValidator implements Validator<Payment> {
             message += "Index out of bounds\n";
         if (payment.getAmount() <= 0)
             message += "Invalid amount\n";
+        if (payment.getType() == null)
+            message += "Type cannot be null!\n";
         if (!message.isEmpty())
             throw new Exception(message);
     }

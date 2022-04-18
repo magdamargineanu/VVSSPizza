@@ -2,31 +2,33 @@ package mmir2764.service;
 
 import mmir2764.model.Payment;
 import mmir2764.model.PaymentType;
-import mmir2764.repository.Repository;
+import mmir2764.repository.PaymentRepository;
+import org.apache.log4j.BasicConfigurator;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.junit.jupiter.api.BeforeAll;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 
 public class PaymentServiceUnitTest {
+    private PaymentRepository paymentRepository;
 
-    @Mock
-    private Repository<Payment> paymentRepository;
-
-    @InjectMocks
     private PizzaService service;
+
+    @BeforeAll
+    static void init() {
+        BasicConfigurator.configure();
+    }
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        paymentRepository = mock(PaymentRepository.class);
+        service = new PizzaService(null, paymentRepository);
     }
 
     @Test

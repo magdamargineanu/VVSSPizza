@@ -3,22 +3,16 @@ package mmir2764.domain;
 import mmir2764.model.Payment;
 import mmir2764.model.PaymentType;
 import mmir2764.repository.PaymentRepository;
-import mmir2764.repository.Repository;
 import mmir2764.service.PizzaService;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
-
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
 
 public class PaymentDomainIntegrationTest {
     public PizzaService service;
 
-    public Repository<Payment> repository;
+    public PaymentRepository repository;
 
     @Before
     public void setUp() {
